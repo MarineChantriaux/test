@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
 </head>
 
 <body>
@@ -38,6 +40,7 @@ et représente une idée associée à un mot. Le plus important, c'est de bien <
                     que j'ai créé pour ce projet.
                     <br>L'enjeu final est de tenter de trouver aux mots une valeur graphique universelle.
                     Le résultat permettra de mettre le doigt sur des divergences ou des conventions de représentation.</p>
+                    <p><br><br>Créé par <a href="https://marinechantriaux.github.io/" target="_blank" style="text-decoration: none;color: #c5c211; font-weight: bold;" rel="noopener">Marine Chantriaux</a> dans le cadre d'un projet à l'ESAD d'Amiens. Merci à tou.te.s les participant.e.s !</p>
             </div>
         </div>
     </div>
@@ -53,7 +56,7 @@ et représente une idée associée à un mot. Le plus important, c'est de bien <
 
     <div class="zone" id="zone"></div>
 
-    <div class="info" onclick="ouvrirInfo()"><img src="img/logo.svg"></div>
+    <div class="info" onclick="ouvrirInfo()"><img src="img/logo2.svg"></div>
 
     <div class="boutons">
         <div class="poubelle" id="poubelle" onclick="resetLettres()">
@@ -66,6 +69,7 @@ et représente une idée associée à un mot. Le plus important, c'est de bien <
         </div>
     </div>
 
+    <div class="mobile-only">Tape ici pour ouvrir le clavier</div>
     <div class="bulle1" id="bulle1">Glisse une lettre sur la poubelle pour l'effacer de l'écran. <br>Clique dessus pour réinitialiser.</div>
     <div class="bulle2" id="bulle2">Sauvegarde réussie ! <br><span onclick="sauvegardeLocale()" style="text-decoration: underline; cursor: pointer;">
         Enregistrer ton oeuvre sur ton pc ?
@@ -215,9 +219,13 @@ function creerLettre(char) {
 
 // Clavier physique (PC)
 document.addEventListener("keydown", e => {
+    // 👇 IMPORTANT : si l'input caché est focus, on ignore
+    if (document.activeElement === inputCachee) return;
+
     if (e.key.length !== 1) return;
-    // Ne pas créer de lettre si on est dans la modale
+
     if (document.getElementById("overlayInfo").classList.contains("actif")) return;
+
     creerLettre(e.key);
 });
 
