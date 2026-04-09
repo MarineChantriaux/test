@@ -64,7 +64,7 @@ font-family: "Inter", sans-serif;
 
 @media (max-width: 600px) {
     .devinette {
-        padding: 12px 70px; /* ⚠️ enlever la virgule */
+        padding: 12px 30px; /* ⚠️ enlever la virgule */
         font-size: 18px; /* texte plus petit */
         max-width: 90vw; /* limite la largeur */
         text-align: center; /* optionnel mais souvent mieux sur mobile */
